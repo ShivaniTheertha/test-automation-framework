@@ -115,6 +115,22 @@ mvn test -Dheadless=true   # CI
 mvn test                    # local — browser opens
 ```
 
+**Failure reporting with exception capture in Extent Reports**
+Test failures are captured with full context in the Extent Report —
+including the exception type and message, the URL where the failure
+occurred, and a screenshot of the browser at the point of failure.
+
+Since Cucumber 7 does not expose the test exception publicly,
+Java reflection is used to access the internal error field from
+the `Scenario` object. This means failures are fully self-documented
+in the HTML report without needing to check console logs.
+
+```
+Extent Report failure entry shows:
+→ Exception: ElementClickInterceptedException: element click intercepted
+→ Failed on URL: .../pim/editEmployee/id/42
+→ Screenshot embedded inline
+```
 ---
 
 ## Running Tests Locally
