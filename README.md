@@ -24,17 +24,17 @@ integration.
 ## Tech Stack
 
 | Layer           | Technology                          |
-|-----------------|-------------------------------------|
-| Language        | Java 17                             |
-| Browser Auto    | Selenium WebDriver 4.22             |
-| BDD Framework   | Cucumber 7.33 + Gherkin             |
-| Test Runner     | TestNG                              |
-| Build Tool      | Maven                               |
-| Reporting       | Extent Reports 5 + Cucumber Reports |
-| Test Data       | Gson (JSON) + CSV                   |
-| CI/CD           | GitHub Actions                      |
-| Design Patterns | Page Object Model, Builder Pattern  |
-| IDE             | IntelliJ IDEA                       |
+|-----------------|-----------------------------------------------------|
+| Language        | Java 17                                             | 
+| Browser Auto    | Selenium WebDriver 4.22                             |
+| BDD Framework   | Cucumber 7.33 + Gherkin                             |
+| Test Runner     | TestNG                                              |
+| Build Tool      | Maven                                               |
+| Reporting       | Extent Reports 5 + Cucumber Reports                 |
+| Test Data       | Gson (JSON) + CSV                                   |
+| CI/CD           | GitHub Actions                                      |
+| Design Patterns | Page Object Model, Builder Pattern, Event Listener  |
+| IDE             | IntelliJ IDEA                                       |
 
 ---
 
@@ -120,10 +120,13 @@ Test failures are captured with full context in the Extent Report —
 including the exception type and message, the URL where the failure
 occurred, and a screenshot of the browser at the point of failure.
 
-Since Cucumber 7 does not expose the test exception publicly,
-Java reflection is used to access the internal error field from
-the `Scenario` object. This means failures are fully self-documented
-in the HTML report without needing to check console logs.
+A custom `CucumberEventListener` implementing Cucumber's
+`ConcurrentEventListener` interface listens to the `TestStepFinished`
+event after every step. When a step fails, `result.getError()` provides
+the actual exception directly from Cucumber's public API — no reflection
+needed. The exception and failed step name are stored in a `ThreadLocal`
+for thread safety, then read by the `@After` hook and logged to the
+Extent Report.
 
 ```
 Extent Report failure entry shows:
