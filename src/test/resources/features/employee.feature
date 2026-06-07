@@ -60,19 +60,19 @@ Feature: Employee management in Orange HRM Application
 
     # -----------Search Employee Scenario----------------
 
-  @employee @search-employee @regression
+  @employee @search-employee @regression @smoke
   Scenario: Search employee by name
     Given a new employee has been added
     When  the user searches for the employee by name
     Then  the employee should appear in the search results
 
-  @employee @search-employee @regression
+  @employee @search-employee @regression @smoke
   Scenario: Search employee by employee ID
     Given a new employee has been added
     When  the user searches for the employee by employee ID
     Then  the employee should appear in the search results
 
-  @employee @search-employee @regression @employeecheck
+  @employee @search-employee @regression @smoke
   Scenario: Search employee by name and ID
     Given a new employee has been added
     When  the user searches for the employee by name and ID
@@ -87,7 +87,7 @@ Feature: Employee management in Orange HRM Application
   #-----------Edit Employee Scenario----------------
 
 
-  @employee @edit-employee @regression @employeecheck
+  @employee @edit-employee @regression
   Scenario: Edit employee first name successfully
     Given a new employee has been added
     When  the user opens the employee profile
@@ -120,7 +120,7 @@ Feature: Employee management in Orange HRM Application
 
     #-----------Delete Employee Scenario----------------
 
-  @employee @delete-employee @regression @employeecheck
+  @employee @delete-employee @regression
   Scenario: Delete a single employee
     Given a new employee has been added
     When  the user deletes the employee from the list

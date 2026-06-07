@@ -23,18 +23,18 @@ integration.
 
 ## Tech Stack
 
-| Layer           | Technology                          |
-|-----------------|-----------------------------------------------------|
-| Language        | Java 17                                             | 
-| Browser Auto    | Selenium WebDriver 4.22                             |
-| BDD Framework   | Cucumber 7.33 + Gherkin                             |
-| Test Runner     | TestNG                                              |
-| Build Tool      | Maven                                               |
-| Reporting       | Extent Reports 5 + Cucumber Reports                 |
-| Test Data       | Gson (JSON) + CSV                                   |
-| CI/CD           | GitHub Actions                                      |
-| Design Patterns | Page Object Model, Builder Pattern, Event Listener  |
-| IDE             | IntelliJ IDEA                                       |
+| Layer           | Technology                                         |
+|-----------------|----------------------------------------------------|
+| Language        | Java 23                                             | 
+| Browser Auto    | Selenium WebDriver 4.22                            |
+| BDD Framework   | Cucumber 7.33 + Gherkin                            |
+| Test Runner     | TestNG                                             |
+| Build Tool      | Maven                                              |
+| Reporting       | Extent Reports 5 + Cucumber Reports                |
+| Test Data       | Gson (JSON) + CSV                                  |
+| CI/CD           | GitHub Actions                                     |
+| Design Patterns | Page Object Model, Builder Pattern, Event Listener |
+| IDE             | IntelliJ IDEA                                      |
 
 ---
 
