@@ -20,6 +20,18 @@
     <profiles>
 
         <profile>
+            <id>smoke</id>
+            <properties>
+                <cucumber.filter.tags>@smoke</cucumber.filter.tags>
+            </properties>
+        </profile>
+        <profile>
+            <id>regression</id>
+            <properties>
+                <cucumber.filter.tags>@regression</cucumber.filter.tags>
+            </properties>
+        </profile>
+        <profile>
             <id>employee</id>
             <properties>
                 <cucumber.filter.tags>@employee</cucumber.filter.tags>
@@ -33,18 +45,12 @@
         </profile>
 
         <profile>
-            <id>regression</id>
-            <properties>
-                <cucumber.filter.tags>@regression</cucumber.filter.tags>
-            </properties>
-        </profile>
-
-        <profile>
             <id>negative</id>
             <properties>
                 <cucumber.filter.tags>@negative</cucumber.filter.tags>
             </properties>
         </profile>
+
 
     </profiles>
 
