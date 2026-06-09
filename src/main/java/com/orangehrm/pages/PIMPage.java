@@ -106,6 +106,7 @@ public class PIMPage extends BasePage {
 
     public void clickSaveButton() {
         wait.until(ExpectedConditions.elementToBeClickable(saveButtonOn)).click();
+        waitForLoaderToDisappear();
     }
 
     public String getMessage() {
@@ -132,6 +133,7 @@ public class PIMPage extends BasePage {
     }
 
     public void selectOptionFromDropdown(String label, String optionText) {
+        waitForLoaderToDisappear();
         By dropdownLocator = By.xpath(
                 "//label[normalize-space()='" + label + "']" +
                         "/ancestor::div[contains(@class,'oxd-input-group')]" +
@@ -218,6 +220,7 @@ public class PIMPage extends BasePage {
 
     public void clickOnEditButton() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(editButtonLocator)).click();
+        waitForLoaderToDisappear();
     }
 
     public String getNameOnPersonalDetails() {
@@ -278,6 +281,7 @@ public class PIMPage extends BasePage {
     public void clickOnJobHamburgerMenu() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(jobHamburgerMenuLocator)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(jobDetailsHeaderLocator));
+        waitForLoaderToDisappear();
     }
 
     public void clickOnReportHamburgerMenu() {
