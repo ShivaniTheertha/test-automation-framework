@@ -47,6 +47,4 @@ public class DashBoard extends BasePage {
             jsClick(menuElement);
         }
     }
-
-
 }

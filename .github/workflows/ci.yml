@@ -7,6 +7,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   smoke-tests:
     name: Smoke Tests
@@ -36,24 +39,29 @@ jobs:
           base.url=https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
           admin.username=${{ secrets.ORANGEHRM_USERNAME }}
           admin.password=${{ secrets.ORANGEHRM_PASSWORD }}
-          base.url=https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
           browser=chrome
           headless=true
-          explicit.wait=10
-          long.wait=20
+          explicit.wait=20
+          long.wait=30
           EOF
+
+      - name: List config file
+        run: cat src/test/resources/config.properties
 
       - name: Run smoke tests
         run: mvn test -P smoke -Dbrowser=chrome -Dheadless=true
+
+      - name: List generated report files
+        if: always()
+        run: find target/ -name "*.html" 2>/dev/null || echo "No HTML files"
 
       - name: Upload smoke test reports
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: smoke-test-reports
-          path: |
-            target/cucumber-reports.html
-            target/extentReport.html
+          path: target/
+          retention-days: 7
 
   regression-tests:
     name: Regression Tests
@@ -86,8 +94,8 @@ jobs:
           admin.password=${{ secrets.ORANGEHRM_PASSWORD }}
           browser=chrome
           headless=true
-          explicit.wait=10
-          long.wait=20
+          explicit.wait=20
+          long.wait=30
           EOF
 
       - name: Run regression tests
@@ -98,6 +106,5 @@ jobs:
         if: always()
         with:
           name: regression-reports
-          path: |
-            target/cucumber-reports.html
-            target/extentReport.html
+          path: target/
+          retention-days: 7

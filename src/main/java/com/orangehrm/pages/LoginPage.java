@@ -42,6 +42,4 @@ public class LoginPage extends BasePage {
     public String getPasswordRequiredMessage() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(passwordRequiredMessage)).getText();
     }
-
-
 }

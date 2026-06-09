@@ -18,8 +18,8 @@ import org.openqa.selenium.WebDriver;
 
 public class Hooks {
 
-    ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
-    private static ExtentReports extentReports = ExtentReportsManager.getInstance();
+    private static final ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();  // ThreadLocal for thread safety in parallel execution
+    private static final ExtentReports extentReports = ExtentReportsManager.getInstance();
 
 
     @Before
@@ -110,6 +110,8 @@ public class Hooks {
         // Clear EventListener ThreadLocals
         CucumberEventListener.stepException.remove();
         CucumberEventListener.failedStepName.remove();
+        extentTest.remove();  // ← clear ThreadLocal after each scenario
+
 
         BrowserUtilityClass.quitDriver();
         extentReports.flush();

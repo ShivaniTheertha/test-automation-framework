@@ -4,14 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.Arrays;
 import java.util.List;
 
 public class PIMPage extends BasePage {
-
 
     // Add Employee locators
     By addEmployeeButtonLocator = By.cssSelector("button[class='oxd-button oxd-button--medium oxd-button--secondary']");
@@ -338,10 +334,6 @@ public class PIMPage extends BasePage {
     public String getNoRecordsFoundText() {
        return wait.until(ExpectedConditions.visibilityOfElementLocated(MessageLocator)).getText();
     }
-
-
-
-
 }
 
 

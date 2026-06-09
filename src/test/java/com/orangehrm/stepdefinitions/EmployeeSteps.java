@@ -19,7 +19,6 @@ public class EmployeeSteps {
     private PIMPage pimPage;
     private DashBoard dashBoard;
     private Employee employee;
-    String employeeId;
     String newFirstName;
     private EmployeeDetailsUpdate data;  // declared null — not initialised here
 
@@ -182,7 +181,7 @@ public class EmployeeSteps {
     @Then("the employee should appear in the search results")
     public void the_employee_should_appear_in_the_search_results() {
         Assert.assertEquals(pimPage.getRecordFoundText(), "(1) Record Found", "Employee search by ID did not return the expected result");
-        pimPage.verifySearchResultList(employeeId, employee.getFirstName(), employee.getLastName());
+        pimPage.verifySearchResultList(employee.getEmpID(), employee.getFirstName(), employee.getLastName());
     }
 
     @When("the user searches for the employee with an {string}")

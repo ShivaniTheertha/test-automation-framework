@@ -84,18 +84,21 @@ public class BrowserUtilityClass {
         }
     }
 
-    public static WebDriverWait initializeWait(int timeoutInSeconds) {
-        wait.set(new WebDriverWait(getDriver(), Duration.ofSeconds(timeoutInSeconds)));
-        return wait.get();
+    public static WebDriverWait getWait() {
+        boolean isHeadless = Boolean.parseBoolean(
+                System.getProperty("headless", "false")
+        );
+        int timeout = isHeadless ? 20 : 10;
+        return new WebDriverWait(getDriver(), Duration.ofSeconds(timeout));
     }
 
-    public static WebDriverWait getWait() {
-        WebDriverWait waitWithTimeOut = initializeWait(10);
-        if (wait.get() == null) {
-            throw new IllegalStateException("WebDriverWait has not been initialized. Call initializeWait() first.");
-        }
-
-        return waitWithTimeOut;
+    // Longer wait for headless mode where elements may take more time to load
+    public static WebDriverWait getLongWait() {
+        boolean isHeadless = Boolean.parseBoolean(
+                System.getProperty("headless", "false")
+        );
+        int timeout = isHeadless ? 30 : 20;
+        return new WebDriverWait(getDriver(), Duration.ofSeconds(timeout));
     }
 
     public static void gotoUrl(String url) {

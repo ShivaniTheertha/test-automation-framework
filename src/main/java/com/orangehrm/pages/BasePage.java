@@ -14,6 +14,9 @@ public class BasePage {
     protected JavascriptExecutor js;
     protected Actions actions;
 
+
+
+
     public BasePage() {
         this.driver = BrowserUtilityClass.getDriver();
         this.wait = BrowserUtilityClass.getWait();
