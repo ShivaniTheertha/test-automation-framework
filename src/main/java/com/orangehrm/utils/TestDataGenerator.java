@@ -1,8 +1,6 @@
 package com.orangehrm.utils;
 
 import com.github.javafaker.Faker;
-
-import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;

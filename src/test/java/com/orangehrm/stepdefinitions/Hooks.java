@@ -25,8 +25,6 @@ public class Hooks {
     @Before
     public void setUp(Scenario scenario) {
         BrowserUtilityClass.initDriver();
-        BrowserUtilityClass.gotoUrl(ConfigReader.get("base.url"));
-
         // Extent Reports setup
         ExtentTest test = extentReports.createTest(scenario.getName());
         extentTest.set(test);
@@ -39,11 +37,23 @@ public class Hooks {
         extentTest.get().log(Status.INFO,
                 "<b>Tags:</b> " + scenario.getSourceTagNames()
         );
+
+        BrowserUtilityClass.gotoUrl(ConfigReader.get("base.url"));
     }
 
 
     @After
     public void tearDown(Scenario scenario) {
+
+        // Null check — if setUp failed before extentTest was set
+        if (extentTest.get() == null) {
+            System.err.println("ExtentTest null for: " + scenario.getName());
+            BrowserUtilityClass.quitDriver();
+            extentReports.flush();
+            return;
+        }
+
+
         if (scenario.isFailed()) {
             try {
                 WebDriver currentDriver = BrowserUtilityClass.getDriver();

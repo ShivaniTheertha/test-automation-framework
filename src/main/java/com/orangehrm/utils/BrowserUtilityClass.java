@@ -15,7 +15,7 @@ import java.time.Duration;
 public class BrowserUtilityClass {
 
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    private static ThreadLocal<WebDriverWait> wait = new ThreadLocal<>();
+
 
     private BrowserUtilityClass() {
         // Constructor
@@ -102,7 +102,15 @@ public class BrowserUtilityClass {
     }
 
     public static void gotoUrl(String url) {
-        getDriver().get(url);
+        getDriver().manage().timeouts()
+                .pageLoadTimeout(Duration.ofSeconds(60));
+        try {
+            getDriver().get(url);
+        } catch (org.openqa.selenium.TimeoutException e) {
+            // Demo site sometimes slow — log warning and continue
+            System.out.println("Page load timeout for: " + url
+                    + " — attempting to continue");
+        }
     }
 
 
