@@ -125,6 +125,7 @@ public class PIMPage extends BasePage {
     public void verifyUpdatedMessage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(MessageLocator));
         driver.navigate().refresh();
+        waitForLoaderToDisappear();
         wait.until(ExpectedConditions.visibilityOfElementLocated(PersonalDetailsHeaderLocator));
     }
 
@@ -196,6 +197,17 @@ public class PIMPage extends BasePage {
     }
 
     public void clickOnSearchButton() {
+        int attempt=0;
+        while(attempt<3)
+        {
+            try{
+                wait.until(ExpectedConditions.visibilityOfElementLocated(searchButtonLocator)).click();
+                return; // Exit the method if click is successful
+            } catch (org.openqa.selenium.StaleElementReferenceException e) {
+                attempt++;
+                System.out.println("Attempt " + attempt + ": Caught StaleElementReferenceException, retrying...");
+            }
+        }
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchButtonLocator)).click();
     }
 
