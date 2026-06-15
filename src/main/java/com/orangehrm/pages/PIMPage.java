@@ -197,6 +197,15 @@ public class PIMPage extends BasePage {
     }
 
     public void clickOnSearchButton() {
+
+        String oldText = "";
+
+        try{
+            oldText = wait.until(ExpectedConditions.visibilityOfElementLocated(recordFoundLocator)).getText();
+        } catch (Exception e) {
+            // If the element is not found, we can ignore it and proceed to click search
+        }
+
         int attempt=0;
         while(attempt<3)
         {
@@ -209,6 +218,18 @@ public class PIMPage extends BasePage {
             }
         }
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchButtonLocator)).click();
+        waitForLoaderToDisappear();
+
+        final String previousText = oldText; // Need a final variable for use in lambda
+
+        wait.until(driver->{
+            try {
+                String newText = wait.until(ExpectedConditions.visibilityOfElementLocated(recordFoundLocator)).getText();
+                return !newText.equals(previousText);
+            } catch (Exception e) {
+                return false;
+            }
+        });
     }
 
     public String getRecordFoundText() {
