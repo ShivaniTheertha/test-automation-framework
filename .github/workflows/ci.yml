@@ -1,4 +1,4 @@
-name: OrangeHRM Automation CI
+name: Test Automation CI
 
 on:
   push:
@@ -63,7 +63,7 @@ jobs:
           retention-days: 7
 
   regression-tests:
-    name: Regression Tests
+    name: UI Regression Tests
     runs-on: ubuntu-latest
     needs: smoke-tests
 

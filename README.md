@@ -1,7 +1,7 @@
 # Test Automation Framework
 
 ![CI](https://github.com/ShivaniTheertha/test-automation-framework/actions/workflows/ci.yml/badge.svg)
-![Java](https://img.shields.io/badge/Java-17-orange)
+![Java](https://img.shields.io/badge/Java-23-orange)
 ![Selenium](https://img.shields.io/badge/Selenium-4.22-green)
 ![RestAssured](https://img.shields.io/badge/RestAssured-6.0-blue)
 ![Cucumber](https://img.shields.io/badge/Cucumber-7.33-brightgreen)
