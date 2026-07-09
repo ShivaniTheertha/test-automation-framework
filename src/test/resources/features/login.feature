@@ -5,13 +5,13 @@ Feature: Login Functionality of OrangeHRM application
 
   #Happy Path Scenario
 
-  @login @smoke @regression @positive
+  @login @smoke @regression @positive @ui-regression
   Scenario: Login with valid credentials
     Given the user is on the OrangeHRM login page
     When the user logs in with valid credentials
     Then the user should be redirected to the OrangeHRM dashboard page
 
-  @login @positive @data-driven @regression
+  @login @positive @data-driven @regression @ui-regression
   Scenario Outline: Login with multiple case sensitive valid credentials
     Given the user is on the OrangeHRM login page
     When the user logs in with username "<username>" and password
@@ -25,19 +25,19 @@ Feature: Login Functionality of OrangeHRM application
 
 
     #Negative Scenario
-  @login @negative @regression
+  @login @negative @regression @ui-regression
   Scenario: Login with empty username
     Given the user is on the OrangeHRM login page
     When the user logs in with username "" and password "admin123"
     Then the username field should show error "Required"
 
-  @login @negative @regression
+  @login @negative @regression @ui-regression
   Scenario: Login with empty password
     Given the user is on the OrangeHRM login page
     When the user logs in with username "Admin" and password ""
     Then the password field should show error "Required"
 
-  @login @negative @regression
+  @login @negative @regression @ui-regression
   Scenario: Login with empty username and password
     Given the user is on the OrangeHRM login page
     When the user logs in with username "" and password ""
@@ -46,7 +46,7 @@ Feature: Login Functionality of OrangeHRM application
 
 
    # ── Data driven — multiple credential combinations in one scenario ───────────
-  @login @negative @data-driven @regression
+  @login @negative @data-driven @regression @ui-regression
   Scenario Outline: Login with multiple invalid credentials
     Given the user is on the OrangeHRM login page
     When the user logs in with username "<username>" and password "<password>"

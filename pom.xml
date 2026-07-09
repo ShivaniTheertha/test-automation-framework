@@ -15,6 +15,7 @@
         <cucumber.filter.tags>@regression</cucumber.filter.tags>
         <browser>chrome</browser>
         <headless>true</headless>
+        <testng.file>testng.xml</testng.file>
     </properties>
 
     <profiles>
@@ -25,12 +26,14 @@
                 <cucumber.filter.tags>@smoke</cucumber.filter.tags>
             </properties>
         </profile>
+
         <profile>
             <id>regression</id>
             <properties>
                 <cucumber.filter.tags>@regression</cucumber.filter.tags>
             </properties>
         </profile>
+
         <profile>
             <id>employee</id>
             <properties>
@@ -51,6 +54,30 @@
             </properties>
         </profile>
 
+        <profile>
+            <id>api</id>
+            <properties>
+                <cucumber.filter.tags>@api</cucumber.filter.tags>
+                <testng.file>testng-api.xml</testng.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>api-regression</id>
+            <properties>
+                <cucumber.filter.tags>@api-regression</cucumber.filter.tags>
+                <testng.file>testng-api.xml</testng.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>ui-regression</id>
+            <properties>
+                <cucumber.filter.tags>@ui-regression</cucumber.filter.tags>
+                <testng.file>testng-ui.xml</testng.file>
+            </properties>
+        </profile>
+
 
     </profiles>
 
@@ -62,7 +89,7 @@
                 <version>3.2.5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>${testng.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
@@ -126,6 +153,35 @@
             <version>2.0.13</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+
+        <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>json-schema-validator</artifactId>
+        <version>6.0.0</version>
+    </dependency>
     </dependencies>
 
 </project>

@@ -11,7 +11,7 @@ Feature: Employee management in Orange HRM Application
 
   # -----------Add Employee Scenario----------------
 
-  @employee @add-employee @smoke @regression
+  @employee @add-employee @smoke @regression @ui-regression
   Scenario: Add a new employee with mandatory fields only
     When  the user clicks on Add Employee button
     And   the user enters first name and last name
@@ -19,7 +19,7 @@ Feature: Employee management in Orange HRM Application
     Then  the employee should be saved successfully
     And   the user should be navigated to the personal details page
 
-  @employee @add-employee @regression
+  @employee @add-employee @regression @ui-regression
   Scenario: Add a new employee with login credentials enabled
     When  the user clicks on Add Employee button
     And   the user enters first name and last name
@@ -29,7 +29,7 @@ Feature: Employee management in Orange HRM Application
     Then  the employee should be saved successfully
     And   the user should be navigated to the personal details page
 
-  @employee @add-employee @regression
+  @employee @add-employee @regression @ui-regression
   Scenario: Add a new employee and complete personal details
     When  the user clicks on Add Employee button
     And   the user enters first name and last name
@@ -45,13 +45,13 @@ Feature: Employee management in Orange HRM Application
     Then  the personal details should be saved successfully
 
 
-  @employee @negative @add-employee @regression
+  @employee @negative @add-employee @regression @ui-regression
   Scenario: Add employee with empty first name
     When the user clicks on Add Employee button
     And  the user attempts to save without entering first name
     Then a validation message "Required" should be displayed
 
-  @employee @negative @add-employee @regression
+  @employee @negative @add-employee @regression @ui-regression
   Scenario: Add employee with empty last name
     When  the user clicks on Add Employee button
     And   the user attempts to save without entering last name
@@ -60,25 +60,25 @@ Feature: Employee management in Orange HRM Application
 
     # -----------Search Employee Scenario----------------
 
-  @employee @search-employee @regression @smoke
+  @employee @search-employee @regression @smoke @ui-regression
   Scenario: Search employee by name
     Given a new employee has been added
     When  the user searches for the employee by name
     Then  the employee should appear in the search results
 
-  @employee @search-employee @regression @smoke
+  @employee @search-employee @regression @smoke @ui-regression
   Scenario: Search employee by employee ID
     Given a new employee has been added
     When  the user searches for the employee by employee ID
     Then  the employee should appear in the search results
 
-  @employee @search-employee @regression @smoke
+  @employee @search-employee @regression @smoke @ui-regression
   Scenario: Search employee by name and ID
     Given a new employee has been added
     When  the user searches for the employee by name and ID
     Then  the employee should appear in the search results
 
-  @employee @negative @search-employee @regression
+  @employee @negative @search-employee @regression @ui-regression
   Scenario: Search for a non-existent employee
     When  the user searches for the employee with an "invalid name"
     Then  no results should be displayed
@@ -87,14 +87,14 @@ Feature: Employee management in Orange HRM Application
   #-----------Edit Employee Scenario----------------
 
 
-  @employee @edit-employee @regression
+  @employee @edit-employee @regression @ui-regression
   Scenario: Edit employee first name successfully
     Given a new employee has been added
     When  the user opens the employee profile
     And   the user updates the first name and saves the personal details
     Then  the updated first name should be displayed
 
-    @employee @edit-employee @negative  @regression
+    @employee @edit-employee @negative  @regression @ui-regression
   Scenario: Edit employee with empty first name
     Given a new employee has been added
     When  the user opens the employee profile
@@ -102,7 +102,7 @@ Feature: Employee management in Orange HRM Application
     Then  a validation message "Required" should be displayed
 
 
-  @employee @edit-employee @data-driven @regression
+  @employee @edit-employee @data-driven @regression @ui-regression
   Scenario Outline: Edit employee job details with various combinations
     Given a new employee has been added
     When  the user opens the employee profile
@@ -120,7 +120,7 @@ Feature: Employee management in Orange HRM Application
 
     #-----------Delete Employee Scenario----------------
 
-  @employee @delete-employee @regression
+  @employee @delete-employee @regression @ui-regression
   Scenario: Delete a single employee
     Given a new employee has been added
     When  the user deletes the employee from the list
@@ -128,7 +128,7 @@ Feature: Employee management in Orange HRM Application
     And   the employee should no longer appear in the search results
 
 
-  @employee @delete-employee @regression
+  @employee @delete-employee @regression @ui-regression
   Scenario: Cancel employee deletion
     Given a new employee has been added
     When  the user initiates delete but cancels the confirmation

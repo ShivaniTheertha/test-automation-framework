@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="OrangeHRM Suite" verbose="1">
+    <!--API tests - Restful Booker-->
+    <test name="API Tests - OrangeHRM">
+        <classes>
+            <class name="com.orangehrm.runners.ApiTestRunner"/>
+        </classes>
+    </test>
+</suite>

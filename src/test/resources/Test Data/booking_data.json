@@ -1,0 +1,14 @@
+{
+  "createBooking": {
+    "depositpaid": true,
+    "additionalneeds": "Breakfast"
+  },
+  "updateBooking": {
+    "depositpaid": false,
+    "additionalneeds": "Dinner"
+  },
+  "partialUpdateBooking": {
+    "firstname": "UpdatedFirst",
+    "lastname": "UpdatedLast"
+  }
+}
