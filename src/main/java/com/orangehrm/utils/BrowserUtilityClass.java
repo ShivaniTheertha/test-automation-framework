@@ -50,6 +50,7 @@ public class BrowserUtilityClass {
                     options.addArguments("--window-size=1920,1080");
                     options.addArguments("--disable-gpu");
                     options.addArguments("--remote-allow-origins=*");
+                    options.addArguments("--accept-lang=en-US");
                 } else {
                     options.addArguments("--start-maximized");
                 }
